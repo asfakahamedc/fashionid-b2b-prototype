@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Factory, 
   ShieldCheck, 
@@ -12,14 +12,24 @@ import {
   CheckCircle2,
   PackageCheck,
   Mail,
-  CloudDownload,
   Phone,
   MapPin,
-  Heart,
-  Lock
+  Lock,
+  CloudDownload
 } from 'lucide-react';
 
 function App() {
+  // Handle hash-based scroll from sub-pages (e.g. /#lead-capture-section)
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -127,9 +137,12 @@ function App() {
 
       <main>
         {/* Section 1: The Hero */}
-        <section className="relative pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden bg-stone-50" id="hero-section" data-testid="hero-section">
-          {/* Subtle background industrial pattern */}
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#1c1917 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+        <section className="relative pt-24 pb-32 sm:pt-32 sm:pb-40 overflow-hidden" id="hero-section" data-testid="hero-section">
+          {/* Real factory floor background — NOT a gradient */}
+          <div className="absolute inset-0">
+            <img src="/hero-texture.png" alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-stone-50/85"></div>
+          </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 
@@ -529,20 +542,47 @@ function App() {
           </div>
         </section>
 
+        {/* Section 7.5: FAQ (AEO Zero-Click) */}
+        <section className="py-24 bg-stone-50 border-y border-stone-900" id="faq-section" data-testid="faq-section">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-black text-stone-950 tracking-tighter mb-12 border-b-4 border-stone-950 pb-4 inline-block">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
+                <h3 className="font-black text-stone-950 mb-2">What is the standard MOQ for garment manufacturing in Bangladesh?</h3>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">Standard MOQs vary by garment type: 3,000 pieces for denim, 1,000 pieces for knitwear (t-shirts, polos), and 2,000 pieces for woven garments. FashionID offers reduced MOQs of 300-500 pieces for new brand sample development at adjusted unit pricing.</p>
+              </div>
+              <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
+                <h3 className="font-black text-stone-950 mb-2">How long does shipping take from Chittagong port to Europe?</h3>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">Sea freight from Chittagong port to major European ports (Rotterdam, Hamburg, Felixstowe) typically takes 25-35 days. Door-to-door including customs clearance averages 35-45 days. Air freight reduces transit to 5-7 days at a significantly higher cost per kg.</p>
+              </div>
+              <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
+                <h3 className="font-black text-stone-950 mb-2">How do I start a production run with a Bangladeshi factory?</h3>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">Submit your tech pack and MOQ requirements through our RFQ form. Our team will respond within 24 hours with a feasibility assessment, indicative pricing, and a production timeline. After approving a physical pre-production sample, bulk production begins with a standard 60-120 day ex-factory window.</p>
+              </div>
+              <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
+                <h3 className="font-black text-stone-950 mb-2">What quality control standards does FashionID enforce?</h3>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">All production runs are subject to AQL 2.5 (Acceptable Quality Level) inspection standards. We conduct inline inspections during production, a pre-shipment final random inspection (FRI), and optional third-party audits through SGS, Bureau Veritas, or Intertek upon buyer request.</p>
+              </div>
+              <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
+                <h3 className="font-black text-stone-950 mb-2">Does FashionID protect my brand's intellectual property?</h3>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">Yes. All tech packs, CADs, and brand assets are protected under our <a href="/nda.html" className="text-yellow-600 underline hover:text-stone-950 transition-colors">strict NDA framework</a>. We bind all partner factories to the same confidentiality terms and prohibit unauthorized overruns or B-grade stock sales.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 8: The Lead Generation Engine */}
-        <section className="py-32 bg-yellow-400 border-y border-stone-900 relative" id="lead-capture-section" data-testid="lead-capture-section">
+        <section className="py-32 bg-stone-950 border-y border-stone-900 relative" id="lead-capture-section" data-testid="lead-capture-section">
           {/* Decorative background element */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#1c1917 1px, transparent 1px), linear-gradient(90deg, #1c1917 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+          <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(250,204,21,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(250,204,21,0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="bg-white rounded-sm shadow-[12px_12px_0px_0px_rgba(28,25,23,1)] p-8 md:p-16 border-[4px] border-stone-950 relative overflow-hidden">
-              
-              <div className="absolute top-0 left-0 w-full h-4 bg-stone-950"></div>
 
-              <div className="text-center mb-12 mt-4">
-                <h2 className="text-5xl font-black mb-4 text-stone-950 tracking-tighter" id="form-heading" data-testid="form-heading">Start Production Setup</h2>
-                <p className="text-stone-700 font-medium text-lg max-w-xl mx-auto">Fill out the details below. Our executive team reviews every request and responds with a detailed viability timeline within 24 hours.</p>
-              </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-10 text-white tracking-tighter text-center" id="form-heading" data-testid="form-heading">Start Production Setup</h2>
+
+            <div className="bg-stone-50 rounded-sm shadow-[12px_12px_0px_0px_rgba(250,204,21,0.6)] p-8 md:p-16 border-[4px] border-stone-800 relative overflow-hidden">
+              
+              <div className="absolute top-0 left-0 w-full h-3 bg-yellow-400"></div>
 
               <form 
                 className="space-y-6" 
@@ -623,9 +663,15 @@ function App() {
                         required
                       >
                         <option value="" disabled>Select a category</option>
-                        <option value="Denims">Denims</option>
-                        <option value="Knits">Knits</option>
-                        <option value="Wovens">Wovens</option>
+                        <option value="Denims">Denims (Pants & Jackets)</option>
+                        <option value="Shirts">Shirts (Casual & Formal)</option>
+                        <option value="T-shirts">T-shirts</option>
+                        <option value="Polos">Polos</option>
+                        <option value="Jackets">Jackets (Winter & Fashion)</option>
+                        <option value="Lingeries">Lingeries</option>
+                        <option value="Uniforms">Uniforms (Corporate & Industrial)</option>
+                        <option value="Cotton Pants">Cotton Pants</option>
+                        <option value="Cargo/Sweat Pants">Cargo / Sweat Pants</option>
                         <option value="Other">Other / Multiple</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-stone-900">
@@ -667,7 +713,7 @@ function App() {
                     type="submit"
                     id="submit-inquiry-btn"
                     data-testid="submit-inquiry-btn"
-                    className="w-full group bg-stone-950 hover:bg-stone-800 text-yellow-400 font-black uppercase tracking-widest text-lg py-5 px-8 flex items-center justify-center border-2 border-stone-950 shadow-[6px_6px_0px_0px_rgba(250,204,21,1)] hover:shadow-[4px_4px_0px_0px_rgba(250,204,21,1)] hover:translate-y-[2px] transition-all"
+                    className="w-full group bg-yellow-400 hover:bg-yellow-500 text-stone-950 font-black uppercase tracking-widest text-lg py-5 px-8 flex items-center justify-center border-2 border-stone-950 shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] hover:translate-y-[2px] transition-all"
                   >
                     Get Pricing & Timelines
                     <ChevronRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -714,10 +760,12 @@ function App() {
             <div className="md:pl-12">
               <h4 className="text-white text-lg font-black uppercase tracking-widest mb-8 border-b-2 border-stone-800 pb-2 inline-block">Useful Links</h4>
               <ul className="space-y-4">
-                <li><a href="#" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Blogs</a></li>
-                <li><a href="#" className="text-yellow-400 font-bold hover:text-white transition-colors uppercase tracking-widest text-xs">About Us</a></li>
-                <li><a href="#" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">What we offer</a></li>
-                <li><a href="#" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Visit Us On Google Map</a></li>
+                <li><a href="/blog.html" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Blogs</a></li>
+                <li><a href="/denim-manufacturing.html" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Denim Manufacturing</a></li>
+                <li><a href="/knitwear-production.html" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Knitwear Production</a></li>
+                <li><a href="/compliance-and-sustainability.html" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Compliance & Sustainability</a></li>
+                <li><a href="/team.html" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Leadership Team</a></li>
+                <li><a href="https://maps.app.goo.gl/4dwf3Gcyd6HVpsLB8" target="_blank" rel="noopener noreferrer" className="text-stone-300 font-bold hover:text-yellow-400 transition-colors uppercase tracking-widest text-xs">Visit Us On Google Map</a></li>
               </ul>
             </div>
 
