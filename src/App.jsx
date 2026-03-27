@@ -744,7 +744,7 @@ function App() {
               </p>
 
               <a 
-                href="/Fashionid-Company-Profile.pdf" 
+                href="/Fashionid-CompanyProfile.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 download 
