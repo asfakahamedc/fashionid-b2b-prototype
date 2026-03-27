@@ -514,7 +514,7 @@ function App() {
                   <img src="/Mohammad Arif Akram.svg" alt="Arif Akram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105" />
                 </div>
                 <h3 className="text-2xl font-black text-stone-950 font-display uppercase font-black">Arif Akram</h3>
-                <p className="text-yellow-600 text-sm font-black mb-4 uppercase tracking-widest drop-shadow-sm">Managing Director</p>
+                <p className="bg-yellow-400 text-stone-950 px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-4 font-display">Managing Director</p>
                 <p className="text-stone-600 text-sm italic font-medium">"15 years bridging the gap between Western brands and BD manufacturing infrastructure."</p>
               </div>
 
@@ -524,7 +524,7 @@ function App() {
                   <img src="/Mohammad Adnan Akram.svg" alt="Adnan Akram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105" />
                 </div>
                 <h3 className="text-2xl font-black text-stone-950 font-display uppercase font-black">Adnan Akram</h3>
-                <p className="text-yellow-600 text-sm font-black mb-4 uppercase tracking-widest drop-shadow-sm">Head of Operations</p>
+                <p className="bg-yellow-400 text-stone-950 px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-4 font-display">Head of Operations</p>
                 <p className="text-stone-600 text-sm italic font-medium">"Ensuring AQL 2.5 standards are met across 12 distinct partner factory floors daily."</p>
               </div>
 
@@ -534,7 +534,7 @@ function App() {
                   <img src="/Mohammad Azam Akram.svg" alt="Azam Akram" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105" />
                 </div>
                 <h3 className="text-2xl font-black text-stone-950 font-display uppercase font-black">Azam Akram</h3>
-                <p className="text-yellow-600 text-sm font-black mb-4 uppercase tracking-widest drop-shadow-sm">Logistics Director</p>
+                <p className="bg-yellow-400 text-stone-950 px-3 py-1 inline-block text-xs font-bold uppercase tracking-widest mb-4 font-display">Logistics Director</p>
                 <p className="text-stone-600 text-sm italic font-medium">"Navigating port authorities and freight lines to eliminate weeks of delivery friction."</p>
               </div>
             </div>
@@ -564,7 +564,7 @@ function App() {
               </div>
               <div className="bg-white border-2 border-stone-950 p-6 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] cursor-pointer transition-all duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(28,25,23,1)] hover:border-yellow-400">
                 <h3 className="font-black text-stone-950 mb-2 font-display uppercase font-black">Does FashionID protect my brand's intellectual property?</h3>
-                <p className="text-sm text-stone-600 font-medium leading-relaxed">Yes. All tech packs, CADs, and brand assets are protected under our <a href="/nda.html" className="text-yellow-600 underline hover:text-stone-950 transition-colors">strict NDA framework</a>. We bind all partner factories to the same confidentiality terms and prohibit unauthorized overruns or B-grade stock sales.</p>
+                <p className="text-sm text-stone-600 font-medium leading-relaxed">Yes. All tech packs, CADs, and brand assets are protected under our <a href="/nda.html" className="text-stone-950 underline decoration-yellow-400 decoration-[3px] hover:bg-yellow-400 transition-colors">strict NDA framework</a>. We bind all partner factories to the same confidentiality terms and prohibit unauthorized overruns or B-grade stock sales.</p>
               </div>
             </div>
           </div>
@@ -719,7 +719,7 @@ function App() {
                   </button>
                   <div className="mt-5 flex items-center justify-center text-xs text-stone-500 font-bold uppercase tracking-widest gap-1" id="form-disclaimer" data-testid="form-disclaimer">
                     <Lock className="w-3 h-3" /> 
-                    <span>Protected by our <a href="/nda.html" className="underline hover:text-yellow-600 transition-colors">Strict NDA Framework</a>.</span>
+                    <span>Protected by our <a href="/nda.html" className="text-stone-950 underline decoration-yellow-400 decoration-[3px] hover:bg-yellow-400 transition-colors">Strict NDA Framework</a>.</span>
                   </div>
                 </div>
               </form>

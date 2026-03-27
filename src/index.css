@@ -21,7 +21,7 @@
   .glass-panel {
     @apply bg-charcoal-800/80 backdrop-blur-md border border-charcoal-400/30;
   }
-  
+
   .focused-input {
     @apply focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all;
   }
